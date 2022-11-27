@@ -1,4 +1,10 @@
-# Count Down Timer with events
+# Count Down Timer with Events
+
+Intermediate level task for practice events. 
+
+Estimated time to complete the task - 45 min.  
+
+The task requires .NET 6 SDK installed.  
 
 ## Task description
 
@@ -14,4 +20,9 @@
 - You need to complete the  implementation of the `CountDownNotifier` class. This class consumes events from the `Timer`.  The implementation logic must check that when the object of `CountDownNotifier` class is created, the `null` is not passed as a parameter insted of the `Timer` object. 
 - Provide the implementation of the [Factory methods](https://gitlab.com/epam-autocode-tasks/delegates-events-task/-/tree/master/CustomTimer/Factories) (see [Factory method theory](https://en.wikipedia.org/wiki/Factory_method_pattern)) to create objects of the `Timer` and `CountDownNotifier` classes.
 
-No changes are allowed to the unit tests!
+## Task Checklist
+
+* Build a solution in [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/building-and-cleaning-projects-and-solutions-in-visual-studio?view=vs-2019). Make sure there are **no compiler errors and warnings**, fix these issues and rebuild the solution. 
+* Run all unit tests with [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2019) and make sure there are **no failed unit tests**. Fix your code to [make all tests GREEN](https://stackoverflow.com/questions/276813/what-is-red-green-testing). 
+* Review all your changes in the codebase **before** [staging the changes and creating a commit](https://docs.microsoft.com/en-us/azure/devops/repos/git/commits?view=azure-devops&tabs=visual-studio). 
+* [Stage your changes, create a commit](https://docs.microsoft.com/en-us/azure/devops/repos/git/commits?view=azure-devops&tabs=visual-studio), and publish your changes to the remote repository. 

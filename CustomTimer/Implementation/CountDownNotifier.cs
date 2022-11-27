@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomTimer.EventArgsClasses;
 using CustomTimer.Interfaces;
 
 namespace CustomTimer.Implementation
@@ -7,11 +8,11 @@ namespace CustomTimer.Implementation
     public class CountDownNotifier : ICountDownNotifier
     {
         /// <inheritdoc/>
-        public void Init(Action<string, int> startDelegate, Action<string> stopDelegate, Action<string, int> tickDelegate)
+        public void Init(EventHandler<StartedEventArgs>? startHandler, EventHandler<StoppedEventArgs>? stopHandler, EventHandler<TickEventArgs>? tickHandler)
         {
             throw new NotImplementedException();
         }
-
+        
         /// <inheritdoc/>
         public void Run()
         {

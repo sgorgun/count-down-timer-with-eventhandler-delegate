@@ -1,9 +1,10 @@
-using System;
+﻿using System;
+using CustomTimer.EventArgsClasses;
 
 namespace CustomTimer.Interfaces
 {
     /// <summary>
-    /// Represents class to subscribe to the Started, Tick, and Stopped events of the Timer class.
+    /// Represents subscriber classes for the Started, Tick, and Stopped events of the CustomTimer class.
     /// </summary>
     public interface ICountDownNotifier
     {
@@ -13,7 +14,7 @@ namespace CustomTimer.Interfaces
         /// <param name="startHandler">Represents a Start event handler. Can be null.</param>
         /// <param name="stopHandler">Represents a Stop event handler. Can be null.</param>
         /// <param name="tickHandler">Represents a Tick event handler. Can be null.</param>
-        void Init(Action<string, int> startHandler, Action<string> stopHandler, Action<string, int> tickHandler);
+        void Init(EventHandler<StartedEventArgs>? startHandler, EventHandler<StoppedEventArgs>? stopHandler, EventHandler<TickEventArgs>? tickHandler);
 
         /// <summary>
         /// Starts timer.

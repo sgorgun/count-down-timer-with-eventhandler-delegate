@@ -2,7 +2,7 @@
 
 Intermediate level task for practice events. 
 
-Estimated time to complete the task - 45 min.  
+Estimated time to complete the task - 1h.  
 
 The task requires .NET 6 SDK installed.  
 

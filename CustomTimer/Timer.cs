@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Xml.Linq;
+using CustomTimer.EventArgsClasses;
 
 namespace CustomTimer
 {
@@ -17,6 +19,9 @@ namespace CustomTimer
     /// </summary>
     public class Timer
     {
+        private readonly string timerName;
+        private int ticks;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Timer"/> class.
         /// </summary>
@@ -24,10 +29,47 @@ namespace CustomTimer
         /// <param name="ticks">Ticks.</param>
         public Timer(string timerName, int ticks)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(timerName))
+            {
+                throw new ArgumentException("Can't be null or empty.", nameof(timerName));
+            }
+
+            if (ticks <= 0)
+            {
+                throw new ArgumentException("The number must be greater than 0.", nameof(ticks));
+            }
+
+            this.timerName = timerName;
+            this.ticks = ticks;
+            this.Started = null;
+            this.Tick = null;
+            this.Stopped = null;
         }
-        
-        // TODO: Add implementation here.
-        // Don't use .NET timers classes implementation.
+
+        public event EventHandler<StartedEventArgs>? Started;
+
+        public event EventHandler<TickEventArgs>? Tick;
+
+        public event EventHandler<StoppedEventArgs>? Stopped;
+
+        public void Start()
+        {
+            this.OnStarted(new (this.timerName, this.ticks));
+
+            while (this.ticks > 0)
+            {
+                this.ticks--;
+                this.OnTick(new (this.timerName, this.ticks));
+                Thread.Sleep(100);
+            }
+
+            this.OnStopped(new (this.timerName));
+        }
+
+        protected virtual void OnStarted(StartedEventArgs e) => this.Started?.Invoke(this, e);
+
+        protected virtual void OnTick(TickEventArgs e) => this.Tick?.Invoke(this, e);
+
+        protected virtual void OnStopped(StoppedEventArgs e) => this.Stopped?.Invoke(this, e);
     }
 }
